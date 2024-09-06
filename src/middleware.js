@@ -31,7 +31,7 @@ export async function middleware(req) {
   // Handle subdomain logic
   if (isValidSubDomain) {
     try {
-      // Use fetch to verify if the subdomain exists
+      // Use fetch to verify if the subdomain exists...
       const response = {ok: true};
 
       if (response.ok) {
