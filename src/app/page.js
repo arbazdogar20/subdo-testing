@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
+import Link from 'next/link';
+import {getSubdomainLink} from '@/shared/utils/general';
 
 export default function Home() {
   return (
@@ -19,6 +21,19 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
+
+        <div className={styles.ctas}>
+          <Link href={getSubdomainLink('/home')} className={styles.primary}>
+            <Image
+              className={styles.logo}
+              src="https://nextjs.org/icons/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Go To subdomain
+          </Link>
+        </div>
       </main>
     </div>
   );
