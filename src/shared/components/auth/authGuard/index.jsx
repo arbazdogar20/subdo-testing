@@ -48,10 +48,10 @@ export default function AuthGuard({children}) {
       if (isDashboardRoute)
         return router.push(`${domainUrl()}${AUTH_ROUTES.login}`);
     } else {
-      if (isAuthRoute || (isDashboardRoute && !isAllowed))
-        return router.push(
-          `${domainUrl({subDomain: currOrg?.domain})}${DASHBOARD_ROUTES.home}`
-        );
+      // if (isAuthRoute || (isDashboardRoute && !isAllowed))
+      //   return router.push(
+      //     `${domainUrl({subDomain: currOrg?.domain})}${DASHBOARD_ROUTES.home}`
+      //   );
     }
 
     setShouldRenderChildren(true);

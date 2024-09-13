@@ -14,10 +14,13 @@ import {signInUser} from '@/shared/redux/slices/user';
 export default function Loginform() {
   const router = useRouter();
   const {isLoading, onSubmitFunction} = useSubmitFunction();
+  const currOrg = useSelector(getCurrentOrganization);
+
+  const subDomain = currOrg?.domain;
 
   const onSubmit = (data) => {
     const onSuccess = () => {
-      // router.push(DASHBOARD_ROUTES.home);
+      router.push(`${domainUrl({subDomain})}${DASHBOARD_ROUTES.home}`);
     };
 
     onSubmitFunction({

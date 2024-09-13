@@ -12,6 +12,8 @@ import {AUTH_ROUTES, DASHBOARD_ROUTES} from '@/shared/constants/appRoutes';
 // Redux
 import {useSelector} from 'react-redux';
 import {getCurrentUser} from '@/redux/slices/user';
+import {getOrganizations} from '@/shared/redux/slices/organization';
+import {domainUrl} from '@/shared/utils/general';
 
 export default function ActionButtons({
   checkInBtn,
@@ -22,7 +24,10 @@ export default function ActionButtons({
   const router = useRouter();
 
   const currentUser = useSelector(getCurrentUser);
+  const currOrg = useSelector(getOrganizations);
   const isLoggedIn = currentUser;
+
+  const subdomain = currOrg?.domain;
 
   const btnStyle = {
     color: 'var(--primary)',
@@ -94,7 +99,13 @@ export default function ActionButtons({
           type={'button'}
           btnText={'Log In to Dashboard'}
           onClick={() =>
-            router.push(isLoggedIn ? DASHBOARD_ROUTES.home : AUTH_ROUTES.login)
+            router.push(
+              isLoggedIn
+                ? `${domainUrl({subDomain: subdomain})}${
+                    DASHBOARD_ROUTES.home
+                  }}`
+                : `${domainUrl()}${AUTH_ROUTES.login}`
+            )
           }
           sx={{
             backgroundColor: 'var(--accent)',
