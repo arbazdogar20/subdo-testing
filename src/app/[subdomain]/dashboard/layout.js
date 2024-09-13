@@ -9,27 +9,15 @@ import Footer from '@/shared/components/dashboard/footer';
 
 import GlobalLayout from '@/shared/components/layouts/globalLayout';
 
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getInitialAppData} from '@/shared/redux/slices/app';
-import {getCurrentUser} from '@/shared/redux/slices/user';
-import {useRouter} from 'next/navigation';
-import {AUTH_ROUTES} from '@/shared/constants/appRoutes';
 
 export default function DashboardLayout({children}) {
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  const currUser = useSelector(getCurrentUser);
-
-  const isUserLoggedIn = Boolean(currUser?.id);
 
   useEffect(() => {
     dispatch(getInitialAppData());
   }, []);
-
-  useEffect(() => {
-    if (!isUserLoggedIn) router.push(AUTH_ROUTES.login);
-  }, [isUserLoggedIn]);
 
   return (
     <GlobalLayout>
