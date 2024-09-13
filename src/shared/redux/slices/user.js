@@ -373,5 +373,8 @@ export const fetchVerifyUserLoginStatus = () => async (dispatch) => {
 
   if (!error) {
     dispatch(actions.setCurrentUser(body?.user));
+    dispatch(
+      OrganizationActions.setCurrentOrganization(body?.currentOrganization)
+    );
   }
 };

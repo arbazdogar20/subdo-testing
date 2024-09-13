@@ -11,7 +11,7 @@ import {
 } from '@/constants/appRoutes';
 
 // Redux
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {getCurrentUser} from '@/redux/slices/user';
 
 // Hooks
@@ -20,16 +20,24 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 import Image from 'next/image';
 import {domainUrl} from '@/shared/utils/general';
+import {verifyActivatedTracking} from '@/shared/redux/slices/timeTracking';
+import {getCurrentOrganization} from '@/shared/redux/slices/organization';
 
 export default function AuthGuard({children}) {
   const router = useRouter();
   const pathname = usePathname();
+  const dispatch = useDispatch();
 
   const {isDashboardRoute, isAuthRoute} = useRouteType();
 
   const currentUser = useSelector(getCurrentUser);
+  const currOrg = useSelector(getCurrentOrganization);
 
   const [shouldRenderChildren, setShouldRenderChildren] = useState(false);
+
+  useEffect(() => {
+    dispatch(verifyActivatedTracking());
+  }, [currentUser]);
 
   useEffect(() => {
     const isAllowed =
@@ -40,8 +48,10 @@ export default function AuthGuard({children}) {
       if (isDashboardRoute)
         return router.push(`${domainUrl()}${AUTH_ROUTES.login}`);
     } else {
-      // if (isAuthRoute || (isDashboardRoute && !isAllowed))
-      //   return router.push(DASHBOARD_ROUTES.home);
+      if (isAuthRoute || (isDashboardRoute && !isAllowed))
+        return router.push(
+          `${domainUrl({subDomain: currOrg?.domain})}${DASHBOARD_ROUTES.home}`
+        );
     }
 
     setShouldRenderChildren(true);
