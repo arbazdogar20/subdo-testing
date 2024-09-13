@@ -86,6 +86,7 @@ export const signInUser =
       dispatch(
         OrganizationActions.setCurrentOrganization(body.currentOrganization)
       );
+      return body;
     } else {
       throw error;
     }
@@ -376,5 +377,8 @@ export const fetchVerifyUserLoginStatus = () => async (dispatch) => {
     dispatch(
       OrganizationActions.setCurrentOrganization(body?.currentOrganization)
     );
+  } else {
+    dispatch(actions.setCurrentUser(null));
+    dispatch(OrganizationActions.setCurrentOrganization({}));
   }
 };

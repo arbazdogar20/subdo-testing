@@ -27,8 +27,6 @@ export default function ActionButtons({
   const currOrg = useSelector(getCurrentOrganization);
   const isLoggedIn = currentUser;
 
-  console.log(`${domainUrl({subDomain: subdomain})}${DASHBOARD_ROUTES.home}`);
-
   const subdomain = currOrg?.domain;
 
   const btnStyle = {

@@ -14,8 +14,8 @@ const useSubmitFunction = () => {
   }) => {
     try {
       setIsLoading(true);
-      await dispatch(reduxFunction(data));
-      if (onSuccess) onSuccess(); // Call onSuccess callback after successful submission
+      const res = await dispatch(reduxFunction(data));
+      if (onSuccess) onSuccess(res); // Call onSuccess callback after successful submission
       setSubmitError(null); // Reset submitError on successful submission
     } catch (err) {
       let errorObject = err?.response?.data || 'An error occurred';

@@ -36,7 +36,7 @@ export default function AuthGuard({children}) {
   const [shouldRenderChildren, setShouldRenderChildren] = useState(false);
 
   useEffect(() => {
-    dispatch(verifyActivatedTracking());
+    // dispatch(verifyActivatedTracking());
   }, [currentUser]);
 
   useEffect(() => {
@@ -45,8 +45,8 @@ export default function AuthGuard({children}) {
       ROLE_BASE_ROUTES[currentUser?.systemRole]?.includes(pathname);
 
     if (!currentUser) {
-      if (isDashboardRoute)
-        return router.push(`${domainUrl()}${AUTH_ROUTES.login}`);
+      // if (isDashboardRoute)
+      //   return router.push(`${domainUrl()}${AUTH_ROUTES.login}`);
     } else {
       // if (isAuthRoute || (isDashboardRoute && !isAllowed))
       //   return router.push(

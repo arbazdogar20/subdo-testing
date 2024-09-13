@@ -10,19 +10,16 @@ import {DASHBOARD_ROUTES} from '@/shared/constants/appRoutes';
 
 // Redux
 import {signInUser} from '@/shared/redux/slices/user';
-import {useSelector} from 'react-redux';
-import {getCurrentOrganization} from '@/shared/redux/slices/organization';
 import {domainUrl} from '@/shared/utils/general';
 
 export default function Loginform() {
   const router = useRouter();
   const {isLoading, onSubmitFunction} = useSubmitFunction();
-  const currOrg = useSelector(getCurrentOrganization);
-
-  const subDomain = currOrg?.domain;
 
   const onSubmit = (data) => {
-    const onSuccess = () => {
+    const onSuccess = (res) => {
+      const organization = res?.currentOrganization;
+      const subDomain = organization?.domain;
       router.push(`${domainUrl({subDomain})}${DASHBOARD_ROUTES.home}`);
     };
 
