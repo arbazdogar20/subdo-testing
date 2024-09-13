@@ -17,7 +17,7 @@ export default function Loginform() {
 
   const onSubmit = (data) => {
     const onSuccess = () => {
-      router.push(DASHBOARD_ROUTES.home);
+      // router.push(DASHBOARD_ROUTES.home);
     };
 
     onSubmitFunction({
