@@ -36,7 +36,7 @@ export default function AuthGuard({children}) {
   const [shouldRenderChildren, setShouldRenderChildren] = useState(false);
 
   useEffect(() => {
-    // dispatch(verifyActivatedTracking());
+    dispatch(verifyActivatedTracking());
   }, [currentUser]);
 
   useEffect(() => {
