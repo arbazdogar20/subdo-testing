@@ -1,0 +1,13 @@
+.container {
+  background-color: #ebf3f8;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}

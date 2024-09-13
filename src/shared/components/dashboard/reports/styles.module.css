@@ -1,0 +1,5 @@
+.title {
+    color: var(--secondary);
+    font-size: x-large !important;
+    font-weight: bold !important;
+}

@@ -1,0 +1,56 @@
+.form {
+  text-align: center;
+  width: 450px;
+  margin: 0 auto;
+}
+
+.heading {
+  margin-bottom: 20px;
+  color: var(--secondary);
+  font-size: 30px;
+}
+
+.link {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.registerPersonal {
+  color: var(--accent);
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.registerOrg {
+  color: var(--accent);
+  font-weight: 700;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.forgotPasswordDiv {
+  text-align: right;
+  margin-top: 10px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.forgotSubHeading {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  .spaceBtwLogoAndForm {
+    height: 80px;
+  }
+}

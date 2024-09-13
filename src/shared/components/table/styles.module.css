@@ -1,0 +1,15 @@
+.table_container {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.table_header {
+  background-color: var(--primary) !important;
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.pagination_container {
+  float: right;
+  padding: 2rem 0rem;
+}

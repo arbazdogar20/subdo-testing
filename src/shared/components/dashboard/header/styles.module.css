@@ -1,0 +1,18 @@
+.title {
+  color: var(--secondary);
+  font-size: x-large !important;
+  font-weight: bold !important;
+}
+
+.action_container {
+  margin: 2rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .action_container {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,17 @@
+.MuiInputBase-root {
+  background-color: #fef4f1 !important;
+  border-radius: 5px !important;
+}
+
+.MuiInputLabel-root {
+  color: #f27649 !important;
+}
+
+.MuiInputBase-root > fieldset {
+  border-color: #f27649 !important;
+  border-radius: 5px !important;
+}
+
+input[type='password']::-ms-reveal {
+  display: none !important;
+}

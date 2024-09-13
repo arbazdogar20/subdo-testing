@@ -1,29 +1,28 @@
-import {getSubdomainLink} from '@/shared/utils/general';
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
+import style from '@/app/auth/auth.module.css';
+import {useEffect} from 'react';
 
-export default function HomePage({params}) {
+import SideContainer from '@/components/auth/sideContainer';
+import HomeComponent from '@/components/Home';
+
+// Redux
+import {dispatch} from '@/shared/redux/store';
+import {getInitialPublicData} from '@/shared/redux/slices/app';
+
+export default function Home() {
+  useEffect(() => {
+    dispatch(getInitialPublicData());
+  }, []);
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      <h1>HomePage {params.subdomain}</h1>
-
-      <div>
-        <Link href={getSubdomainLink('/home')}>
-          <Image
-            src="https://nextjs.org/icons/vercel.svg"
-            alt="Vercel logomark"
-            width={20}
-            height={20}
-          />
-          Go To subdomain
-        </Link>
+    <div className={style.container}>
+      <div className={style.form}>
+        <HomeComponent />
+      </div>
+      <div className={style.side}>
+        <SideContainer
+          heading={'Welcome Back!'}
+          description={'Please check in with your Employee ID'}
+        />
       </div>
     </div>
   );

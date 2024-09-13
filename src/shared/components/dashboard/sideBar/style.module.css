@@ -1,0 +1,53 @@
+.container {
+  height: 100%;
+  background: radial-gradient(
+    113.94% 113.94% at 50.06% -13.94%,
+    #0c4d71 17.04%,
+    #3688b5 100%
+  );
+}
+
+.linkStyle {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  padding: 10px;
+}
+
+.nameAndIconsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  padding: 7px 5px;
+  border: 1px solid transparent;
+}
+
+.nameAndIconsWrapper:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.active {
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.borderSideColor {
+  position: fixed;
+  margin-top: -28px;
+  left: 230px;
+  height: 19px;
+  width: 9px;
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  .borderSideColor {
+    display: none !important;
+  }
+}

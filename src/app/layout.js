@@ -1,28 +1,36 @@
-import localFont from 'next/font/local';
 import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+import PropTypes from 'prop-types';
+import {Raleway} from 'next/font/google';
+import {Toaster} from 'react-hot-toast';
+import {Providers} from '@/shared/redux/provider';
+
+import {appInfo} from '@/shared/constants/appRoutes';
+import AuthGuard from '@/shared/components/auth/authGuard';
+
+const inter = Raleway({subsets: ['latin']});
 
 export const metadata = {
-  title: 'Subdo Testing',
-  description: 'This app is only creating for subdomain testing',
+  title: appInfo.title,
+  description: appInfo.description,
 };
 
 export default function RootLayout({children}) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={inter.className}>
+        <Providers>
+          <AuthGuard>{children}</AuthGuard>
+        </Providers>
+        <Toaster
+          position={'top-right'}
+          toastOptions={{className: 'react-hot-toast'}}
+        />
       </body>
     </html>
   );
 }
+
+RootLayout.propTypes = {
+  children: PropTypes.node,
+};

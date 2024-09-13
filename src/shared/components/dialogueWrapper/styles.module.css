@@ -1,0 +1,25 @@
+.heading_container {
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: larger !important;
+  font-weight: bold !important;
+  color: var(--secondary);
+}
+
+.dialogContainer {
+  padding: 1rem;
+  width: 500px;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .dialogContainer {
+    padding: 1rem;
+    min-width: 90%;
+    max-width: 90%;
+  }
+}
