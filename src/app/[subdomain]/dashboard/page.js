@@ -20,6 +20,8 @@ export default function Dashboard() {
       return <ManagerDashboard />;
     } else if (role === employee.value) {
       return <EmployeeDashboard />;
+    } else {
+      return <h1>No Dashboard</h1>;
     }
   };
 

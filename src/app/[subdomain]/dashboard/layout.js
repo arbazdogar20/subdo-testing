@@ -14,6 +14,12 @@ import {useDispatch} from 'react-redux';
 import {getInitialAppData} from '@/shared/redux/slices/app';
 
 export default function DashboardLayout({children}) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getInitialAppData());
+  }, []);
+
   return (
     <GlobalLayout>
       {/* <VerifyUserLoginStatus /> */}

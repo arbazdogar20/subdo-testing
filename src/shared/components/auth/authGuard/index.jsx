@@ -37,10 +37,11 @@ export default function AuthGuard({children}) {
       ROLE_BASE_ROUTES[currentUser?.systemRole]?.includes(pathname);
 
     if (!currentUser) {
-      if (isDashboardRoute) return router.push(AUTH_ROUTES.login);
+      if (isDashboardRoute)
+        return router.push(`${domainUrl()}${AUTH_ROUTES.login}`);
     } else {
-      if (isAuthRoute || (isDashboardRoute && !isAllowed))
-        return router.push(DASHBOARD_ROUTES.home);
+      // if (isAuthRoute || (isDashboardRoute && !isAllowed))
+      //   return router.push(DASHBOARD_ROUTES.home);
     }
 
     setShouldRenderChildren(true);
