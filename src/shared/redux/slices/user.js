@@ -363,11 +363,15 @@ export const updateManagerAccessibility =
   };
 
 export const fetchVerifyUserLoginStatus = () => async (dispatch) => {
-  await handleAsyncRequest({
+  const {error, body} = await handleAsyncRequest({
     dispatch,
     actions,
     requestFn: getRequest,
     endpoint: `/users/me`,
     toastMessage: {success: {show: false}, error: {show: false}},
   });
+
+  if (!error) {
+    dispatch(actions.setCurrentUser(body?.user));
+  }
 };

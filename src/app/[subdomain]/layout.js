@@ -7,6 +7,7 @@ import {findOrganizationByDomain} from '@/shared/redux/slices/organization';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import {domainUrl} from '@/shared/utils/general';
+import {fetchVerifyUserLoginStatus} from '@/shared/redux/slices/user';
 
 export default function SubdomainLayout({children, params}) {
   const subdomain = params.subdomain;
@@ -17,6 +18,7 @@ export default function SubdomainLayout({children, params}) {
 
   const fetchOrganization = async () => {
     const res = await dispatch(findOrganizationByDomain({domain: subdomain}));
+    await dispatch(fetchVerifyUserLoginStatus());
     if (!res) setIsValidSubdomain(false);
     setIsFetching(false);
   };

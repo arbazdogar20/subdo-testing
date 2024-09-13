@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.siderBarWrapper {
+  width: 250px;
+  position: fixed;
+  z-index: 3;
+  flex: 0 0 auto;
+  height: 100%;
+}
+
+.topBarAndChildrenWrapper {
+  margin-left: 250px;
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  min-width: 0px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.children {
+  margin-top: 60px;
+  max-width: 100%;
+  padding: 20px;
+
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 992px) {
+  .siderBarWrapper {
+    display: none;
+  }
+
+  .topBarAndChildrenWrapper {
+    margin-left: 0;
+  }
+}
