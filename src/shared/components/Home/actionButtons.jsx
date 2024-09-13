@@ -27,6 +27,8 @@ export default function ActionButtons({
   const currOrg = useSelector(getCurrentOrganization);
   const isLoggedIn = currentUser;
 
+  console.log(currOrg);
+
   const subdomain = currOrg?.domain;
 
   const btnStyle = {
@@ -101,9 +103,7 @@ export default function ActionButtons({
           onClick={() =>
             router.push(
               isLoggedIn
-                ? `${domainUrl({subDomain: subdomain})}${
-                    DASHBOARD_ROUTES.home
-                  }}`
+                ? `${domainUrl({subDomain: subdomain})}${DASHBOARD_ROUTES.home}`
                 : `${domainUrl()}${AUTH_ROUTES.login}`
             )
           }
