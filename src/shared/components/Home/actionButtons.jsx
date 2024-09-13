@@ -12,7 +12,7 @@ import {AUTH_ROUTES, DASHBOARD_ROUTES} from '@/shared/constants/appRoutes';
 // Redux
 import {useSelector} from 'react-redux';
 import {getCurrentUser} from '@/redux/slices/user';
-import {getOrganizations} from '@/shared/redux/slices/organization';
+import {getCurrentOrganization} from '@/shared/redux/slices/organization';
 import {domainUrl} from '@/shared/utils/general';
 
 export default function ActionButtons({
@@ -24,7 +24,7 @@ export default function ActionButtons({
   const router = useRouter();
 
   const currentUser = useSelector(getCurrentUser);
-  const currOrg = useSelector(getOrganizations);
+  const currOrg = useSelector(getCurrentOrganization);
   const isLoggedIn = currentUser;
 
   const subdomain = currOrg?.domain;
